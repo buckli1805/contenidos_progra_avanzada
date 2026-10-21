@@ -9,8 +9,7 @@ sock.listen()
 
 sock_cliente, address = sock.accept()
 print(f"Conexion desde {address}")
-data = funciones.recibir_mensaje(sock_cliente)
-mensaje = funciones.decodificar(data)
+mensaje = funciones.recibir_mensaje(sock_cliente)
 sala = mensaje.sala
 print(f"{sala} {mensaje.autor.nombre}: {mensaje.texto}")
 mensaje_servidor = funciones.Mensaje(funciones.Usuario("Servidor",0),
