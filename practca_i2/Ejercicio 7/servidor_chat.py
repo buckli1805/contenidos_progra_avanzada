@@ -32,9 +32,10 @@ class Servidor:
             mensaje = funciones.recibir_mensaje(sock_cliente)
             # TODO 5: si es None → desconectar: sacarlo de self.clientes,
             #         cerrar su socket, imprimir aviso y salir del loop
-            if mensaje == None:
+            if mensaje is None:
+                with self.lock:
+                    del self.clientes[address]
                 sock_cliente.close()
-                del self.clientes[address]
                 print("No llego ningun mensaje")
                 break
             # TODO 6: si no, imprimirlo y llamar a self.reenviar(mensaje)
