@@ -15,7 +15,7 @@ class Servidor:
     def aceptar_clientes(self) -> None:
         while True:
             # TODO 1: aceptar un cliente
-            sock_cliente, addres = self.socket_servidorck.accept()
+            sock_cliente, addres = self.socket_servidor.accept()
 
             # TODO 2: agregarlo a self.clientes (¿con o sin lock?)
             with self.lock:
