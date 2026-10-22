@@ -24,12 +24,12 @@ if __name__ == "__main__":
     try:
         sock.connect(("localhost", 8998))
         # TODO 3: lanzar el thread que escucha (¿daemon o no?)
-        cliente_thread = threading.Thread(target=funciones.recibir_mensaje, args=(sock), daemon=True)
+        cliente_thread = threading.Thread(target=escuchar, args=(sock,), daemon=True)
+        cliente_thread.start()
         while True:
             texto = input()
             # TODO 4: enviar un Mensaje con ese texto a la sala "general"
             funciones.enviar_mensaje(sock, Mensaje(usuario, texto, "general"))
-            
 
     except ConnectionError:
         print("Se perdió la conexión")
